@@ -1,0 +1,566 @@
+﻿:root {
+      /* ThÃ¨me sombre (valeur par dÃ©faut, avant chargement JS) */
+      --bg: #0E1116;
+      --bg-soft: #151922;
+      --line: #232833;
+      --gold: #D4A657;
+      --gold-soft: #D4A65733;
+      --text: #E7E9EE;
+      --muted: #8A93A3;
+      --nav-scrolled-bg: rgba(21, 25, 34, 0.85);
+      --dot-color: var(--line);
+      --card-shadow: 0 8px 24px -10px rgba(0, 0, 0, .55);
+      --card-shadow-hover: 0 16px 40px -12px rgba(0, 0, 0, .65);
+      --section-alt-bg: #121620;
+      --gold-dark: #7A5623;
+    }
+
+    html[data-theme="light"] {
+      --bg: #F5F6F8;
+      --bg-soft: #FFFFFF;
+      --line: #D8DCE3;
+      --gold: #B8802E;
+      --gold-soft: #B8802E33;
+      --text: #1A1D23;
+      --muted: #5B6472;
+      --nav-scrolled-bg: rgba(255, 255, 255, 0.85);
+      --dot-color: rgba(184, 128, 46, .22);
+      --card-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 4px 14px -6px rgba(16, 24, 40, .10);
+      --card-shadow-hover: 0 10px 28px -10px rgba(16, 24, 40, .18);
+      --section-alt-bg: #F3EEE6;
+      --gold-dark: #6E4E1F;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      transition: background-color .3s ease, color .3s ease;
+    }
+
+    .font-display {
+      font-family: 'Sora', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dot-grid {
+      background-image: radial-gradient(var(--dot-color) 1.4px, transparent 1.4px);
+      background-size: 22px 22px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%);
+    }
+
+    .glow-border {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+      box-shadow: var(--card-shadow);
+    }
+
+    .glow-border::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: conic-gradient(from var(--angle, 0deg), transparent 0 60%, var(--gold) 75%, transparent 90%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity .4s ease;
+      animation: spin 4s linear infinite paused;
+    }
+
+    .glow-border:hover::before {
+      opacity: 1;
+      animation-play-state: running;
+    }
+
+    @keyframes spin {
+      to {
+        --angle: 360deg;
+      }
+    }
+
+    @property --angle {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0deg;
+    }
+
+    .caret {
+      display: inline-block;
+      width: 8px;
+      height: 1.1em;
+      background: var(--gold);
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite;
+      vertical-align: -0.15em;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .pulse-dot {
+      position: relative;
+    }
+
+    .pulse-dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background: #34D399;
+      opacity: .6;
+      animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes ping {
+
+      75%,
+      100% {
+        transform: scale(2.4);
+        opacity: 0;
+      }
+    }
+
+    .typed-line {
+      overflow: hidden;
+      white-space: nowrap;
+      clip-path: inset(0 100% 0 0);
+      animation: type 1.6s steps(28, end) forwards;
+    }
+
+    .typed-line.l1 {
+      animation-delay: .3s;
+    }
+
+    .typed-line.l2 {
+      animation-delay: 2.1s;
+    }
+
+    .typed-line.l3 {
+      animation-delay: 3.6s;
+    }
+
+    @keyframes type {
+      to {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    /* Cadre photo faÃ§on "sÃ©lection Ã©diteur de code" */
+    .photo-frame {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      flex-shrink: 0;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    .photo-frame::before,
+    .photo-frame::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: var(--gold);
+      border-style: solid;
+      border-width: 0;
+    }
+
+    .photo-frame::before {
+      top: -6px;
+      left: -6px;
+      border-top-width: 2px;
+      border-left-width: 2px;
+      border-top-left-radius: 4px;
+    }
+
+    .photo-frame::after {
+      bottom: -6px;
+      right: -6px;
+      border-bottom-width: 2px;
+      border-right-width: 2px;
+      border-bottom-right-radius: 4px;
+    }
+
+    /* Grande photo de la colonne droite du hero */
+    .photo-frame-lg {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .photo-frame-lg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    .photo-frame-lg::before,
+    .photo-frame-lg::after {
+      content: "";
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-color: var(--gold);
+      border-style: solid;
+      border-width: 0;
+      z-index: 2;
+    }
+
+    .photo-frame-lg::before {
+      top: -8px;
+      left: -8px;
+      border-top-width: 2px;
+      border-left-width: 2px;
+      border-top-left-radius: 6px;
+    }
+
+    .photo-frame-lg::after {
+      bottom: -8px;
+      right: -8px;
+      border-bottom-width: 2px;
+      border-right-width: 2px;
+      border-bottom-right-radius: 6px;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      color: var(--gold);
+      letter-spacing: .05em;
+    }
+
+    /* Cards compÃ©tences & projets : mÃªme langage visuel que le glow-border */
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--bg-soft), var(--bg));
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-soft);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .skill-mono {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--gold);
+      flex-shrink: 0;
+      font-size: 1rem;
+      transition: border-color .25s ease, transform .25s ease;
+    }
+
+    .card:hover .skill-mono {
+      border-color: var(--gold-soft);
+      transform: scale(1.05);
+    }
+
+    .proj-card .proj-thumb {
+      overflow: hidden;
+      border-radius: 14px 14px 0 0;
+    }
+
+    .proj-card .proj-thumb img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease, filter .5s ease;
+      filter: grayscale(40%);
+    }
+
+    .proj-card:hover .proj-thumb img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+
+    .proj-card .proj-link {
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .proj-card:hover .proj-link {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Timeline verticale */
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--gold), var(--line) 85%);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 44px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 4px;
+      width: 15px;
+      height: 15px;
+      border-radius: 9999px;
+      background: var(--bg);
+      border: 2px solid var(--gold);
+    }
+
+    /* Formulaire */
+    .field {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: .75rem 1rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      transition: border-color .2s ease;
+    }
+
+    .field:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .field::placeholder {
+      color: var(--muted);
+    }
+
+    /* Bordure de section en dÃ©gradÃ©, faÃ§on landing page Laravel */
+    .fade-border-t::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line) 50%, transparent);
+    }
+
+    html[data-theme="light"] .fade-border-t::before {
+      background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+    }
+
+    /* IcÃ´nes rÃ©seaux sociaux du footer */
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: border-color .25s ease, color .25s ease, transform .25s ease;
+    }
+
+    .social-icon:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    /* Barres de niveau des compÃ©tences */
+    .skill-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    }
+
+    /* Ligne de compÃ©tence cliquable */
+    .skill-row {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 6px 8px;
+      margin: 0 -8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      color: inherit;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .skill-row:hover {
+      background: var(--gold-soft);
+      transform: translateX(2px);
+    }
+
+    .skill-row:hover .skill-bar-fill {
+      filter: brightness(1.1);
+    }
+
+    /* Popup de rÃ©sumÃ© compÃ©tence */
+    #skill-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    #skill-modal.is-open {
+      display: flex;
+    }
+
+    #skill-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .6);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    #skill-modal.is-open #skill-modal-backdrop {
+      opacity: 1;
+    }
+
+    #skill-modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      opacity: 0;
+      transform: scale(.95) translateY(10px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    #skill-modal.is-open #skill-modal-panel {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Grand nom en filigrane, faÃ§on footer laravel.com */
+    .brand-watermark {
+      font-size: clamp(4.5rem, 16vw, 13rem);
+      font-weight: 900;
+      color: var(--gold-dark);
+      opacity: .55;
+      margin-top: -0.05em;
+      margin-bottom: -0.12em;
+      letter-spacing: -0.02em;
+    }
+
+    /* Navbar */
+    section[id] {
+      scroll-margin-top: 110px;
+    }
+
+    #nav-inner {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 0px;
+      box-shadow: none;
+      margin-top: 0px;
+      max-width: 100%;
+      transition: all .35s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    body.nav-scrolled #nav-inner {
+      background: var(--nav-scrolled-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-color: var(--line);
+      border-radius: 9999px;
+      box-shadow: 0 12px 32px -12px rgba(0, 0, 0, .65);
+      margin-top: 14px;
+      max-width: 760px;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .25s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Bouton clair/sombre : n'affiche que l'icÃ´ne pertinente */
+    html[data-theme="dark"] #icon-moon {
+      display: none;
+    }
+
+    html[data-theme="light"] #icon-sun {
+      display: none;
+    }
+
+    /* Les animations d'apparition au scroll sont dÃ©sormais gÃ©rÃ©es par GSAP + ScrollTrigger (voir script en bas de page) */
