@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="{{ asset('js/theme-init.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brahima | Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+</head>
+
+<body class="text-[var(--text)] antialiased">
+
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-50">
+        <div id="nav-inner" class="mx-auto flex items-center justify-between px-6 py-4">
+            <a href="#accueil" class="font-display font-700 text-base" style="color:var(--gold)">BK<span
+                    class="text-[var(--text)]">.</span></a>
+
+            <div class="hidden sm:flex items-center gap-7 font-mono text-xs text-[var(--muted)]">
+                <a href="#accueil" class="nav-link hover:text-[var(--gold)] transition-colors">Accueil</a>
+                <a href="#competences" class="nav-link hover:text-[var(--gold)] transition-colors">Compétences</a>
+                <a href="#projets" class="nav-link hover:text-[var(--gold)] transition-colors">Projets</a>
+                <a href="#blog" class="nav-link hover:text-[var(--gold)] transition-colors">Blog</a>
+                <a href="#parcours" class="nav-link hover:text-[var(--gold)] transition-colors">Parcours</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" aria-label="Basculer entre thème clair et sombre"
+                    class="w-9 h-9 rounded-full border border-[var(--line)] flex items-center justify-center hover:border-[var(--gold)] transition-colors">
+                    <i id="icon-sun" class="ri-sun-line text-[var(--text)]"></i>
+                    <i id="icon-moon" class="ri-moon-line text-[var(--text)]"></i>
+                </button>
+                <a href="#contact"
+                    class="font-mono text-xs px-4 py-2 rounded-lg border border-[var(--line)] hover:border-[var(--gold)] transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="accueil" class="relative overflow-hidden">
+        <div class="absolute inset-0 dot-grid pointer-events-none"></div>
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.15] pointer-events-none"
+            style="background:var(--gold)"></div>
+
+        <div class="relative max-w-6xl mx-auto px-6 pt-28 pb-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 font-mono text-xs text-[var(--muted)] border border-[var(--line)] rounded-full px-3 py-1.5 mb-8">
+                    <span class="pulse-dot w-2 h-2 rounded-full bg-emerald-400"></span>
+                    Disponible pour missions et basés à Abidjan
+                </div>
+
+                <p class="font-mono text-sm sm:text-base mb-4" style="color:var(--gold)">
+                    <span class="text-[var(--muted)]">$</span> whoami
+                    <br class="sm:hidden">
+                    <span id="typed-role"></span><span class="caret"></span>
+                </p>
+
+                <h1 class="font-display font-800 text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] tracking-tight">
+                    Je transforme des idées en
+                    <span style="color:var(--gold)">applications web</span>
+                    completes, du serveur à l'interface.
+                </h1>
+
+                <p class="mt-6 text-lg text-[var(--muted)] max-w-xl leading-relaxed">
+                    Développeur javascript/PHP/Laravel spécialisé en applications métier :
+                    paiements, temps réel, dashboards. Actuellement
+                    sur <span class="font-mono text-[var(--text)]">RestauCI</span>,
+                    une plateforme de gestion multi-restaurants.
+                </p>
+
+                <div class="mt-10 flex flex-wrap items-center gap-4">
+                    <a href="#projets"
+                        class="font-display font-semibold px-6 py-3 rounded-lg text-[#0E1116] transition-transform hover:-translate-y-0.5"
+                        style="background:var(--gold)">
+                        Voir mes projets
+                    </a>
+                    <a href="#contact"
+                        class="font-mono text-sm text-[var(--text)] border border-[var(--line)] px-6 py-3 rounded-lg hover:border-[var(--gold)] transition-colors">
+                        me contacter
+                    </a>
+                </div>
+
+                <div class="mt-14 flex items-center gap-8 font-mono text-xs text-[var(--muted)]">
+                    <span>Laravel</span>
+                    <span class="w-1 h-1 rounded-full bg-[var(--line)]"></span>
+                    <span>Filament</span>
+                    <span class="w-1 h-1 rounded-full bg-[var(--line)]"></span>
+                    <span>Tailwind</span>
+                    <span class="w-1 h-1 rounded-full bg-[var(--line)]"></span>
+                    <span>Reverb / WebSockets</span>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="photo-frame-lg">
+                    <img src="{{ asset('ma_photo.jpg') }}" alt="Portrait de Brahima, développeur fullstack web">
+                </div>
+
+                <div id="hero-terminal-2"
+                    class="glow-border rounded-2xl p-3.5 [--angle:0deg] absolute -top-6 -right-4 sm:-right-8 w-[70%] max-w-[240px] backdrop-blur">
+                    <div class="flex items-center gap-2 pb-2.5 border-b border-[var(--line)] mb-2.5">
+                        <span class="w-2 h-2 rounded-full bg-[#FF5F56]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#FFBD2E]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#27C93F]"></span>
+                        <span class="ml-2 font-mono text-[9px] text-[var(--muted)]">app — npm</span>
+                    </div>
+
+                    <div class="font-mono text-[11px] leading-6">
+                        <p class="typed-line l1"><span style="color:var(--gold)">➜</span> npm create vite@latest</p>
+                        <p class="typed-line l2"><span style="color:var(--gold)">➜</span> npm run dev<span
+                                class="caret"></span></p>
+                    </div>
+                </div>
+
+                <div id="hero-terminal"
+                    class="glow-border rounded-2xl p-4 [--angle:0deg] absolute -bottom-8 -left-6 sm:-left-10 w-[88%] max-w-[320px] backdrop-blur">
+                    <div class="flex items-center gap-2 pb-3 border-b border-[var(--line)] mb-3">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></span>
+                        <span class="ml-3 font-mono text-[10px] text-[var(--muted)]">restauci — zsh</span>
+                    </div>
+
+                    <div class="font-mono text-xs leading-7">
+                        <p class="typed-line l1"><span style="color:var(--gold)">➜</span> php artisan make:model
+                            Restaurant -m</p>
+                        <p class="typed-line l2 text-[var(--muted)]">✔ Model & migration créés</p>
+                        <p class="typed-line l3"><span style="color:var(--gold)">➜</span> php artisan serve<span
+                                class="caret"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences" class="relative max-w-full mx-auto px-6 py-20 fade-border-t"
+        style="background: var(--section-alt-bg);">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="section-label">→ compétences</p>
+                <h2 class="font-display font-800 text-3xl mt-3 mb-10">Ma stack au quotidien</h2>
+            </div>
+
+            <div class="reveal glow-border rounded-2xl overflow-hidden">
+                <div class="flex items-center gap-2 px-5 sm:px-7 py-4 border-b border-[var(--line)]">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></span>
+                    <span class="ml-3 font-mono text-xs text-[var(--muted)]">stack.sh — status</span>
+                    <span class="ml-auto hidden sm:flex items-center gap-1.5 font-mono text-[10px] text-[var(--muted)]">
+                        <span class="pulse-dot w-1.5 h-1.5 rounded-full bg-emerald-400"></span> mis à jour · 2026
+                    </span>
+                </div>
+
+                <div class="reveal-group grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--line)]">
+                    <div class="p-6 sm:p-8">
+                        <p class="font-mono text-xs mb-6 flex items-center gap-2" style="color:var(--gold)">
+                            <i class="ri-terminal-box-line"></i> ## backend
+                        </p>
+                        <div class="space-y-5">
+                            <button type="button" class="skill-row" data-skill="php">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i class="ri-php-line"></i>
+                                        PHP</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="90"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="skill-row" data-skill="laravel">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-code-box-line"></i> Laravel</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="92"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="skill-row" data-skill="livewire">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-flashlight-line"></i> Livewire</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="85"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-8">
+                        <p class="font-mono text-xs mb-6 flex items-center gap-2" style="color:var(--gold)">
+                            <i class="ri-terminal-box-line"></i> ## frontend
+                        </p>
+                        <div class="space-y-5">
+                            <button type="button" class="skill-row" data-skill="tailwind">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-tailwind-css-line"></i> Tailwind CSS</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="88"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="skill-row" data-skill="javascript">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-javascript-line"></i> JavaScript</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">78%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="78"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="skill-row" data-skill="bootstrap">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-bootstrap-line"></i> Bootstrap</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="82"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="skill-row" data-skill="react">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-reactjs-line"></i> React</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">72%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="72"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-8">
+                        <p class="font-mono text-xs mb-6 flex items-center gap-2" style="color:var(--gold)">
+                            <i class="ri-terminal-box-line"></i> ## outils
+                        </p>
+                        <div class="space-y-5">
+                            <button type="button" class="skill-row" data-skill="git">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-git-branch-line"></i> Git</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="85"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="skill-row" data-skill="github">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-github-line"></i> GitHub</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="85"></div>
+                                </div>
+                            </button>
+                            <button type="button" class="skill-row" data-skill="gitlab">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-mono text-xs flex items-center gap-2"><i
+                                            class="ri-gitlab-line"></i> GitLab</span>
+                                    <span class="font-mono text-[11px] text-[var(--muted)]">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-bar-fill" data-level="85"></div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <p
+                            class="font-mono text-[11px] text-[var(--muted)] mt-8 pt-5 border-t border-[var(--line)] leading-relaxed">
+                            <span style="color:var(--gold)">➜</span> whoami<br>
+                            fullstack dev, basé à Abidjan<span class="caret"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="relative max-w-6xl mx-auto px-6 py-20 fade-border-t">
+        <div class="reveal">
+            <p class="section-label">→ projets</p>
+            <h2 class="font-display font-800 text-3xl mt-3 mb-10">Ce que j'ai construit</h2>
+        </div>
+
+        <div class="reveal-group grid md:grid-cols-3 gap-6">
+            <div class="reveal-item card proj-card overflow-hidden">
+                <div class="proj-thumb">
+                    <img src="https://placehold.co/480x320/151922/D4A657?text=RestauCI" alt="Aperçu du projet RestauCI">
+                </div>
+                <div class="p-5">
+                    <h3 class="font-display font-700 text-lg">RestauCI</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Plateforme de gestion multi-restaurants
+                        : paiements GeniusPay, commandes en temps réel, tableau de bord Filament.</p>
+                    <div class="flex flex-wrap gap-2 mt-4 font-mono text-[10px] text-[var(--muted)]">
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5">Laravel</span>
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5">Filament</span>
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5">Reverb</span>
+                    </div>
+                    <a href="#" class="proj-link inline-block mt-4 font-mono text-xs" style="color:var(--gold)">Voir le
+                        projet →</a>
+                </div>
+            </div>
+
+            <div class="reveal-item card proj-card overflow-hidden">
+                <div class="proj-thumb">
+                    <img src="https://placehold.co/480x320/151922/D4A657?text=Projet+2" alt="Aperçu du projet 2">
+                </div>
+                <div class="p-5">
+                    <h3 class="font-display font-700 text-lg">Nom du projet</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Courte description du projet, du
+                        problème résolu et de ton rôle dessus.</p>
+                    <div class="flex flex-wrap gap-2 mt-4 font-mono text-[10px] text-[var(--muted)]">
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5">React</span>
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5">Bootstrap</span>
+                    </div>
+                    <a href="#" class="proj-link inline-block mt-4 font-mono text-xs" style="color:var(--gold)">Voir le
+                        projet →</a>
+                </div>
+            </div>
+
+            <div class="reveal-item card proj-card overflow-hidden">
+                <div class="proj-thumb">
+                    <img src="https://placehold.co/480x320/151922/D4A657?text=Projet+3" alt="Aperçu du projet 3">
+                </div>
+                <div class="p-5">
+                    <h3 class="font-display font-700 text-lg">Nom du projet</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Courte description du projet, du
+                        problème résolu et de ton rôle dessus.</p>
+                    <div class="flex flex-wrap gap-2 mt-4 font-mono text-[10px] text-[var(--muted)]">
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5">Livewire</span>
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5">MySQL</span>
+                    </div>
+                    <a href="#" class="proj-link inline-block mt-4 font-mono text-xs" style="color:var(--gold)">Voir le
+                        projet →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="relative max-w-6xl mx-auto px-6 py-20 fade-border-t">
+        <div class="reveal">
+            <p class="section-label">→ blog</p>
+            <h2 class="font-display font-800 text-3xl mt-3 mb-10">Notes & retours d'expérience</h2>
+        </div>
+
+        <div class="reveal-group grid md:grid-cols-3 gap-6">
+            <article class="reveal-item card proj-card overflow-hidden">
+                <div class="proj-thumb">
+                    <img src="https://placehold.co/480x320/151922/D4A657?text=GeniusPay"
+                        alt="Illustration article intégration GeniusPay">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-3 font-mono text-[10px] text-[var(--muted)]">
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5"
+                            style="color:var(--gold)">Paiements</span>
+                        <span>Juin 2026</span>
+                    </div>
+                    <h3 class="font-display font-700 text-lg mt-3">Intégrer GeniusPay dans une app multi-restaurants
+                    </h3>
+                    <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Retour sur la mise en place du checkout,
+                        la gestion des webhooks et la détection de conflit panier avec plusieurs restaurants.</p>
+                    <a href="#" class="proj-link inline-block mt-4 font-mono text-xs" style="color:var(--gold)">Lire
+                        l'article →</a>
+                </div>
+            </article>
+
+            <article class="reveal-item card proj-card overflow-hidden">
+                <div class="proj-thumb">
+                    <img src="https://placehold.co/480x320/151922/D4A657?text=Reverb"
+                        alt="Illustration article Laravel Reverb">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-3 font-mono text-[10px] text-[var(--muted)]">
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5"
+                            style="color:var(--gold)">Temps réel</span>
+                        <span>Mai 2026</span>
+                    </div>
+                    <h3 class="font-display font-700 text-lg mt-3">Des commentaires en direct avec Laravel Reverb</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Construire un système de commentaires et
+                        réponses en temps réel avec WebSockets, sans surcharger le frontend.</p>
+                    <a href="#" class="proj-link inline-block mt-4 font-mono text-xs" style="color:var(--gold)">Lire
+                        l'article →</a>
+                </div>
+            </article>
+
+            <article class="reveal-item card proj-card overflow-hidden">
+                <div class="proj-thumb">
+                    <img src="https://placehold.co/480x320/151922/D4A657?text=Observers"
+                        alt="Illustration article Laravel Observers">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-3 font-mono text-[10px] text-[var(--muted)]">
+                        <span class="border border-[var(--line)] rounded-full px-2 py-0.5"
+                            style="color:var(--gold)">Laravel</span>
+                        <span>Avril 2026</span>
+                    </div>
+                    <h3 class="font-display font-700 text-lg mt-3">Générer des SKU propres avec les Observers</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Pourquoi déplacer la logique de
+                        génération de SKU vers un Observer plutôt que dans le contrôleur, avec Str::uuid().</p>
+                    <a href="#" class="proj-link inline-block mt-4 font-mono text-xs" style="color:var(--gold)">Lire
+                        l'article →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="parcours" class="relative max-w-4xl mx-auto px-6 py-20 fade-border-t">
+        <div class="reveal">
+            <p class="section-label">→ parcours</p>
+            <h2 class="font-display font-800 text-3xl mt-3 mb-12">Mon parcours scolaire</h2>
+        </div>
+
+        <div class="reveal-group timeline space-y-10">
+            <div class="reveal-item timeline-item">
+                <p class="font-mono text-xs" style="color:var(--gold)">2024 — Aujourd'hui</p>
+                <h3 class="font-display font-700 mt-1">Développeur Laravel — Formation continue & projets</h3>
+                <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Montée en compétences sur Laravel, Filament,
+                    Tailwind CSS et les architectures temps réel, à travers des projets concrets comme RestauCI.</p>
+            </div>
+            <div class="reveal-item timeline-item">
+                <p class="font-mono text-xs" style="color:var(--gold)">Année</p>
+                <h3 class="font-display font-700 mt-1">Nom du diplôme / de la formation</h3>
+                <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Nom de l'établissement, ville. Courte
+                    description de ce qui a été appris.</p>
+            </div>
+            <div class="reveal-item timeline-item">
+                <p class="font-mono text-xs" style="color:var(--gold)">Année</p>
+                <h3 class="font-display font-700 mt-1">Nom du diplôme / de la formation</h3>
+                <p class="text-sm text-[var(--muted)] mt-2 leading-relaxed">Nom de l'établissement, ville. Courte
+                    description de ce qui a été appris.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="relative max-w-full mx-auto px-6 py-20 fade-border-t"
+        style="background: var(--section-alt-bg);">
+        <div class="max-w-3xl mx-auto">
+            <div class="reveal">
+                <p class="section-label">→ contact</p>
+                <h2 class="font-display font-800 text-3xl mt-3 mb-3">Discutons de ton projet</h2>
+                <p class="text-[var(--muted)] mb-10">Un backend à construire, une app à améliorer ? Écris-moi.</p>
+            </div>
+
+            <form class="reveal card p-6 sm:p-8 space-y-5" onsubmit="return false;">
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="font-mono text-xs text-[var(--muted)] block mb-2">Nom</label>
+                        <input type="text" class="field" placeholder="Ton nom">
+                    </div>
+                    <div>
+                        <label class="font-mono text-xs text-[var(--muted)] block mb-2">Email</label>
+                        <input type="email" class="field" placeholder="ton@email.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="font-mono text-xs text-[var(--muted)] block mb-2">Message</label>
+                    <textarea class="field" rows="5" placeholder="Parle-moi de ton projet..."></textarea>
+                </div>
+                <button type="submit"
+                    class="font-display font-semibold px-6 py-3 rounded-lg text-[#0E1116] transition-transform hover:-translate-y-0.5"
+                    style="background:var(--gold)">
+                    Envoyer le message
+                </button>
+                <p class="font-mono text-[11px] text-[var(--muted)]">* formulaire statique — à relier à ta route Laravel
+                    (Livewire ou contrôleur + Mail)</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="relative fade-border-t overflow-hidden flex flex-col"
+        style="min-height:50vh; background: var(--section-alt-bg);">
+        <div class="max-w-6xl mx-auto px-6 w-full flex-1 flex flex-col justify-center gap-10 py-14">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+                <div>
+                    <p class="font-display font-800 text-2xl" style="color:var(--gold)">Brahima<span
+                            class="text-[var(--text)]">.</span></p>
+                    <p class="text-[var(--muted)] mt-2 max-w-sm">Développeur fullstack web basé à Abidjan — Laravel,
+                        React, Livewire.</p>
+                </div>
+
+                <div class="flex items-center gap-6 font-mono text-xs text-[var(--muted)]">
+                    <a href="#" class="flex items-center gap-1.5 hover:text-[var(--gold)] transition-colors"><i
+                            class="ri-github-line"></i> GitHub</a>
+                    <a href="#" class="flex items-center gap-1.5 hover:text-[var(--gold)] transition-colors"><i
+                            class="ri-linkedin-box-line"></i> LinkedIn</a>
+                    <a href="#contact" class="flex items-center gap-1.5 hover:text-[var(--gold)] transition-colors"><i
+                            class="ri-mail-line"></i> Contact</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="#" aria-label="Facebook" class="social-icon"><i class="ri-facebook-fill"></i></a>
+                <a href="#" aria-label="WhatsApp" class="social-icon"><i class="ri-whatsapp-line"></i></a>
+                <a href="#" aria-label="Messenger" class="social-icon"><i class="ri-messenger-line"></i></a>
+                <a href="#" aria-label="X (Twitter)" class="social-icon"><i class="ri-twitter-x-line"></i></a>
+                <a href="#" aria-label="TikTok" class="social-icon"><i class="ri-tiktok-line"></i></a>
+            </div>
+
+            <div class="pt-6 border-t border-[var(--line)]">
+                <p class="font-mono text-xs text-[var(--muted)]">© 2026 — Tous droits réservés.</p>
+            </div>
+        </div>
+
+        <p class="brand-watermark select-none pointer-events-none font-display text-center leading-none"
+            aria-hidden="true">BRAHIMA</p>
+    </footer>
+
+    <div id="skill-modal" role="dialog" aria-modal="true" aria-labelledby="skill-modal-title">
+        <div id="skill-modal-backdrop"></div>
+        <div id="skill-modal-panel" class="glow-border rounded-2xl overflow-hidden">
+            <div class="flex items-center gap-2 px-5 py-4 border-b border-[var(--line)]">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></span>
+                <span id="skill-modal-file" class="ml-3 font-mono text-xs text-[var(--muted)]">tech.md</span>
+                <button id="skill-modal-close" type="button" aria-label="Fermer"
+                    class="ml-auto w-7 h-7 rounded-full border border-[var(--line)] flex items-center justify-center hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+
+            <div class="p-6">
+                <div class="flex items-center gap-3 mb-5">
+                    <div id="skill-modal-icon" class="skill-mono"></div>
+                    <div>
+                        <h3 id="skill-modal-title" class="font-display font-700 text-lg"></h3>
+                        <p id="skill-modal-category" class="font-mono text-[11px] text-[var(--muted)]"></p>
+                    </div>
+                    <span id="skill-modal-level" class="ml-auto font-mono text-sm" style="color:var(--gold)"></span>
+                </div>
+
+                <div class="skill-bar mb-5">
+                    <div id="skill-modal-bar" class="skill-bar-fill"></div>
+                </div>
+
+                <p id="skill-modal-desc" class="text-sm text-[var(--muted)] leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/script.js') }}" defer></script>
+    <script src="{{ asset('js/gsap/gsap-animations.js') }}" defer></script>
+</body>
+
+</html>
